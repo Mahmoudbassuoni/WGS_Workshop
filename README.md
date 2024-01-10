@@ -53,6 +53,6 @@ This Docker image includes tools such as FastQC, Trimmomatic, BWA, SAMtools, bcf
 We welcome contributions to improve the workshop material and Docker image.
 
 ## Contact
-For any queries regarding the workshop, feel free to reach out to [Mahmoud Bassyouni. Email: mahmoud.bassyouni@marc-eg.org].
+For any queries regarding the workshop, feel free to reach out to [Mahmoud Bassyouni][Email: mahmoud.bassyouni@marc-eg.org].
 ## License
 This project is licensed under the [MIT License] - see the [LICENSE.md](https://github.com/Mahmoudbassuoni/WGS_Workshop/blob/main/README.md) file for details.
