@@ -21,9 +21,9 @@ Day 2 dives into the critical steps of WGS data processing, including quality ch
 * Review the basics of sequencing data and its common formats.
 * Familiarize yourself with the concepts of sequence alignment.
 ## Resources
-[Quality Control Guidelines](https://github.com/ga4gh/quality-control-wgs)
-[BWA User Manual](https://bio-bwa.sourceforge.net/bwa.shtml)
-[BQSR Documentation](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR-)
+* [Quality Control Guidelines](https://github.com/ga4gh/quality-control-wgs)
+* [BWA User Manual](https://bio-bwa.sourceforge.net/bwa.shtml)
+* [BQSR Documentation](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR-)
 ## Exercises
 Practical exercises will be conducted to reinforce the concepts learned. Be prepared to work with real sequencing data.
 
