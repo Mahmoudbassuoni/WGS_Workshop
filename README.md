@@ -21,8 +21,30 @@ To ensure a uniform environment for all participants, we use a Docker image that
 This Docker image includes tools such as FastQC, Trimmomatic, BWA, SAMtools, bcftools, and SnpEff, preconfigured for immediate use.
 
 ## Schedule
-[Include a detailed schedule of the workshop here]
-
+#### Day 1: Introduction to Bash and Basic Terminal Commands
+* Introduction to Workshop
+* Basics of Unix/Linux and Bash
+* Navigating the File System
+* Basic File Manipulation
+* Advanced Bash Scripting
+* Hands-On Exercises
+* Discussion and Q&A
+### Day 2: Pipeline Preprocessing, Quality Check, Alignment, and BQSR
+* Introduction to WGS Pipeline
+* Quality Control and Preprocessing
+* Hands-On Exercise on QC
+* Sequence Alignment
+* Hands-On Alignment Exercise
+* Introduction to BQSR
+* BQSR Exercise
+* Discussion and Q&A
+#### Day 3: Variant Calling, VCF Files, and Variant Filtering
+* Introduction to Variant Calling
+* Hands-On Variant Calling Exercise
+* Understanding VCF Files
+* Variant Filtering Techniques
+* Practical Filtering Exercise
+* Wrap-Up and Final Q&A
 ## Prerequisites
 * Basic knowledge of genomics and bioinformatics.
 * Familiarity with command-line interfaces and Docker.
