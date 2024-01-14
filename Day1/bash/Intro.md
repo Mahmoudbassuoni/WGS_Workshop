@@ -1,4 +1,5 @@
-# Bash Programming: Introduction to Unix Components
+<p align="center">
+  <h1 align="center">Bash Programming: Introduction to Unix Components</h1>
 
 ## UNIX: A Machine Independent Operating System
 
@@ -18,9 +19,10 @@
 
 ### Machine Independence
 - Written in C, ensuring compatibility across different hardware.
+<p align="center"><a href="#"><img src="./images/1.png"></a></p>
 
-## Overview of Unix Shells
-
+## Overview of Unix Shells 
+ 
 ### Shell Scripts and Shells
 - The shell interprets and executes user commands, passed to the OS kernel.
 
