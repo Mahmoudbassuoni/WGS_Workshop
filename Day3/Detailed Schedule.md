@@ -6,12 +6,13 @@ The final day focuses on variant calling, understanding VCF files, and technique
 
 | Time          | Activity                                  | Description |
 |---------------|-------------------------------------------|-------------|
-| 9:30 AM - 10:30 AM | Introduction to Variant Calling        | Understanding the concepts and tools used in variant calling. |
+| 9:30 AM - 10:30 AM | Introduction to Variant Calling and Annotation        | Understanding the concepts and tools used in variant calling and Annotation. |
 | 10:30 AM - 11:30 AM | Hands-On Variant Calling Exercise      | Practical application using GATK for variant calling on a sample dataset. |
 | 11:30 AM - 12:00 PM | Break                                   | - |
-| 12:00 PM - 1:00 PM | Understanding VCF Files                 | Exploring the VCF format and content in-depth. |
+| 12:00 PM - 12:30 PM | Understanding VCF Files                 | Exploring the VCF format and content in-depth. |
+| 12:30 PM - 1:00 PM | Variant Filtering Techniques              | Learning methods to filter and select meaningful variants, with practical exercises. |
 | 1:00 PM - 2:00 PM | Lunch Break                              | - |
-| 2:00 PM - 3:30 PM | Variant Filtering Techniques            | Learning methods to filter and select meaningful variants, with practical exercises. |
+| 2:00 PM - 3:30 PM | Variant Annotation            | Hands-on exercise in annotating a set of variants and discussing the implications of the annotations.|
 | 3:30 PM - 4:30 PM | Wrap-Up and Final Q&A                   | Recap of the workshop, final discussions, and feedback session. |
 
 This day includes hands-on exercises and practical applications to ensure a thorough understanding of variant calling and filtering.
