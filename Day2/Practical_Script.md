@@ -1,5 +1,5 @@
 # DAY2, Practical Part. 
-This Tutorial was copied and edited from [Ibra Lujumba](https://hackmd.io/@harbi811).
+This tutorial explains how to use the GATK best practices guidelines for WGS data, which can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-) for GATK usage and [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535912-Data-pre-processing-for-variant-discovery) for data preprocessing. It is solely intended for educational reasons. This Tutorial was copied and edited from [Ibra Lujumba](https://hackmd.io/@harbi811).
 ## Part [1]: Docker Installation and Image start
 **All tools needed was downloaded and installed on a docker image for anyone to be able to reproduce the same data without errors**
 ### 1.1 Download Docker
@@ -44,3 +44,5 @@ sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.0
 ```
 sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.0
 ```
+## Part [2]: Dataset Retrieval and Pre-Proccessing
+### 2.1 Dataset Download
