@@ -1,4 +1,4 @@
-# DAY2, Practical Part. 
+# DAY 2, Practical Part. 
 This tutorial explains how to use the GATK best practices guidelines for WGS data, which can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-) for GATK usage and [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535912-Data-pre-processing-for-variant-discovery) for data preprocessing. It is solely intended for educational reasons. This Tutorial was copied and edited from [Ibra Lujumba](https://hackmd.io/@harbi811).
 
 <p align="center"><a href="#"><img src="./pipeline.png"></a></p>
@@ -100,7 +100,7 @@ done
 **Run a second quality check to confirm that the reads meet the trimming specifications specified**
 * Compare reports before and after trimming.
 * Compare file sizes before and after trimming
-## Part[3] : Alignment
+## Part [3] : Alignment
 ### 3.1 Download our reference genome for chromosome 13 from Ensembl
 ```
 wget https://ftp.ensembl.org/pub/current_fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.13.fa.gz
@@ -144,7 +144,7 @@ do
     
 done
 ```
-## Part[3] : Using GATK
+## Part [4] : Using GATK
 While following GATK best practices guidelines, the following steps are necessary. These steps are computationally intensivee
 1. Marking duplicates
 2. Base recalibration
