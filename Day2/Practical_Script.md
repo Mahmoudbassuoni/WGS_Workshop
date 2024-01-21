@@ -1,4 +1,4 @@
-#DAY2, Practical Part. 
+# DAY2, Practical Part. 
 This Tutorial was copied and edited from [Ibra Lujumba](https://hackmd.io/@harbi811).
 ## Part [1]: Docker Installation and Image start
 **All tools needed was downloaded and installed on a docker image for anyone to be able to reproduce the same data without errors**
@@ -38,9 +38,9 @@ sudo docker run hello-world
 ```
 ### 1.3 Install our tutorial docker image
 ```
-sudo docker pull mahmoudbassyouni/bioinformatics_workshop_nu:v2
+sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.0
 ```
 ### 1.4 Run the docker image
 ```
-sudo docker run -it -v $HOME:$HOME mahmoudbassyouni/bioinformatics_workshop_nu:v2
+sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.0
 ```
