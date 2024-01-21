@@ -144,3 +144,89 @@ do
     
 done
 ```
+## Part[3] : Using GATK
+While following GATK best practices guidelines, the following steps are necessary. These steps are computationally intensivee
+1. Marking duplicates
+2. Base recalibration
+3. HaplotypeCaller
+
+**Make directories `metrics` and `gatk`**
+### 3.1 Download a reference set of known variants
+```
+mkdir metrics gatk
+
+wget https://ftp.ensembl.org/pub/current_variation/vcf/homo_sapiens/homo_sapiens-chr13.vcf.gz
+
+gunzip homo_sapiens/homo_sapiens-chr13.vcf.gz
+```
+### 3.2 Index the VCF
+```
+gatk IndexFeatureFile \
+     -F homo_sapiens-chr13.vcf
+```
+**Copy this and save is as `gatk.sh`. It may take a while to run this so it can be run in the background**.
+
+To do this:
+```
+nohup bash gatk.sh >& gatk.log &
+```
+```
+reference_genome=Homo_sapiens.GRCh38.dna.chromosome.13.fa
+known_vcf=homo_sapiens-chr13.vcf
+
+for sample in `cat accession.txt`;
+do
+    input_bam="${sample}"_sorted.bam
+    
+    # marking duplicates
+    
+    gatk MarkDuplicates \
+              --INPUT $input_bam \
+              --OUTPUT gatk/"${sample}"_sorted_dedup.bam \
+              --METRICS_FILE metrics/"${sample}"_dup_metrics.txt \
+              --REMOVE_DUPLICATES true \
+              --CREATE_INDEX true 
+    
+    # BQSR building the model
+
+    gatk BaseRecalibrator \
+            --input gatk/"${sample}"_sorted_dedup.bam \
+            --output gatk/"${sample}"_recal_data.table \
+            --reference "${reference_genome}"  \
+            --known-sites "${reference_vcf}"
+           
+    # Applying BQSR Recalibration
+    
+    gatk ApplyBQSR \
+           --bqsr-recal-file gatk/"${sample}"_recal_data.table \
+           --input gatk/"${sample}"_sorted_dedup.bam \
+           --output gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
+           --reference "${reference_genome}"
+           
+    
+    # Checking the quality of recalibration
+    # Post BQSR recal table
+
+    gatk BaseRecalibrator \
+           --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \   
+           --output gatk/"${sample}"_post_recal_data.table \
+           --reference "${reference_genome}"  \
+           --known-sites "${reference_vcf}"
+          
+
+    # Analyse covariates (compare before and After BQSR)
+    # Evaluate and compare base quality score recalibration tables
+
+    gatk AnalyzeCovariates \
+           -before gatk/"${sample}"_recal_data.table \
+           -after gatk/"${sample}"_post_recal_data.table \
+           -plots gatk/"${sample}"_AnalyzeCovariates.pdf
+           
+    gatk HaplotypeCaller \
+           --reference "${reference_genome}" \
+           --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
+           --output gatk/"${sample}".g.vcf.gz \
+           --ERC GVCF
+  
+done
+```
