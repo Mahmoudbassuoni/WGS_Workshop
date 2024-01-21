@@ -49,3 +49,98 @@ sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.0
 ```
 ## Part [2]: Dataset Retrieval and Pre-Proccessing
 ### 2.1 Dataset Download
+**Pick some data from SRA database using sratools**
+Create a text file and paste in these accession numbers. Call it `accession.txt`
+```
+ERR10219898
+ERR10219899
+ERR10219900
+ERR10219901
+```
+**How to do it using bash command line ?** 
+*hint use 'echo' with the separator being \n*.
+#### 1. Download our data
+```
+mkdir fastqs
+
+for sample in `cat accession.txt`;
+do
+    fastq-dump --gzip --split-3 $sample -O fastqs/
+    
+done
+```
+#### 2. Quality Check
+**Let’s check the quality. Create a folder fastqc_htmls**
+```
+mkdir fastqc_htmls
+
+fastqc fastqs/* --outdir fastqc_htmls
+
+cd fastqc_htmls
+
+multiqc .
+```
+**How many reads are contained in each file?**
+#### 3. Trimming
+```
+mkdir trimmed_reads
+
+for sample in `cat accession.txt`;
+do
+    R1=fastqs/"${sample}"_1.fastq.gz
+    R2=fastqs/"${sample}"_2.fastq.gz
+
+    java -jar /opt/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33 \
+    $R1 $R2 \
+    trimmed_reads/"${sample}"_1_paired.fastq.gz trimmed_reads/"${sample}"_1_unpaired.fastq.gz \
+    trimmed_reads/"${sample}"_2_paired.fastq.gz trimmed_reads/"${sample}"_2_unpaired.fastq.gz \
+    LEADING:10 TRAILING:10 SLIDINGWINDOW:4:15 MINLEN:36
+done
+```
+**Run a second quality check to confirm that the reads meet the trimming specifications specified**
+* Compare reports before and after trimming.
+* Compare file sizes before and after trimming
+## Part[3] : Alignment
+### 3.1 Download our reference genome for chromosome 13 from Ensembl
+```
+wget https://ftp.ensembl.org/pub/current_fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.13.fa.gz
+```
+#### 1. Index using samtools and bwa
+The reference genome should be in the same directory as its index
+```
+gunzip Homo_sapiens.GRCh38.dna.chromosome.13.fa.gz
+
+bwa index Homo_sapiens.GRCh38.dna.chromosome.13.fa
+
+samtools faidx Homo_sapiens.GRCh38.dna.chromosome.13.fa
+```
+### 3.2 Alignment using bwa-mem
+```
+for sample in `cat accession.txt`;
+do
+    R1=trimmed_reads/"${sample}"_1_paired.fq.gz
+    R2=trimmed_reads/"${sample}"_2_paired.fq.gz
+    
+    bwa mem -aM -t 4  \
+        Homo_sapiens.GRCh38.dna.chromosome.13.fa \
+        -R "@RG\tID:${sample}\tSM:${sample}\tPL:ILLUMINA" \
+            $R1 $R2 > "${sample}".sam
+            
+    # convert to BAM format
+    samtools  view -Shb "${sample}".sam > "${sample}".bam
+    
+    # all this can be run using one command
+    # bwa mem -aM -t 4 Homo_sapiens.GRCh38.dna.chromosome.13.fa -R "@RG\tID:${sample}\tSM:${sample}\tPL:ILLUMINA" \
+     #      $R1 $R2 | samtools view -Shb - > "${sample}.bam"
+done
+```
+#### 1. Sorting and indexing BAM files
+```
+for sample in `cat accession.txt`;
+do
+    samtools sort "${sample}".bam -o "${sample}"_sorted.bam
+    
+    samtools index "${sample}"_sorted.bam
+    
+done
+```
