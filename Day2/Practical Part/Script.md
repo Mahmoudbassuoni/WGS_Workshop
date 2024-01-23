@@ -41,11 +41,11 @@ sudo docker run hello-world
 ```
 ### 1.3 Install our tutorial docker image
 ```
-sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.0
+sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.1
 ```
 ### 1.4 Run the docker image
 ```
-sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.0
+sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.1
 ```
 ## Part [2]: Dataset Retrieval and Pre-Proccessing
 ### 2.1 Dataset Download
@@ -54,8 +54,6 @@ Create a text file and paste in these accession numbers. Call it `accession.txt`
 ```
 ERR10219898
 ERR10219899
-ERR10219900
-ERR10219901
 ```
 **How to do it using bash command line ?** 
 *hint use 'echo' with the separator being \n*.
