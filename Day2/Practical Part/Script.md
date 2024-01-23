@@ -116,8 +116,8 @@ samtools faidx Homo_sapiens.GRCh38.dna.chromosome.13.fa
 ```
 for sample in `cat accession.txt`;
 do
-    R1=trimmed_reads/"${sample}"_1_paired.fq.gz
-    R2=trimmed_reads/"${sample}"_2_paired.fq.gz
+    R1=trimmed_reads/"${sample}"_1_paired.fastq.gz
+    R2=trimmed_reads/"${sample}"_2_paired.fastq.gz
     
     bwa mem -aM -t 4  \
         Homo_sapiens.GRCh38.dna.chromosome.13.fa \
