@@ -174,48 +174,70 @@ To do this:
 nohup bash gatk.sh >& gatk.log &
 ```
 ```
-reference_genome=Homo_sapiens.GRCh38.dna.chromosome.13.fa
-known_vcf=homo_sapiens-chr13.vcf
+#!/bin/bash
+set -x
+set -e
 
-for sample in `cat accession.txt`;
-do
-    input_bam="${sample}"_sorted.bam
-    
+reference_genome="/data/Documents/Homo_sapiens.GRCh38.dna.chromosome.13.fa"
+known_vcf="/data/Documents/homo_sapiens-chr13.vcf"
+
+# Check if reference genome and known VCF exist
+if [[ ! -f "$reference_genome" || ! -f "$known_vcf" ]]; then
+    echo "Reference genome or known VCF file not found."
+    exit 1
+fi
+
+while IFS= read -r sample; do
+    input_bam="/data/Documents/${sample}_sorted.bam"  # Adjust the path as necessary
+
+    # Check if input BAM file exists
+    if [[ ! -f "$input_bam" ]]; then
+        echo "BAM file for sample ${sample} not found."
+        continue
+    fi
+
+echo "Marking Duplicates Start"
+
     # marking duplicates
-    
+
     gatk MarkDuplicates \
               --INPUT $input_bam \
               --OUTPUT gatk/"${sample}"_sorted_dedup.bam \
               --METRICS_FILE metrics/"${sample}"_dup_metrics.txt \
               --REMOVE_DUPLICATES true \
-              --CREATE_INDEX true 
-    
+              --CREATE_INDEX true
+
+echo "BQSR Start"
+
     # BQSR building the model
 
     gatk BaseRecalibrator \
             --input gatk/"${sample}"_sorted_dedup.bam \
             --output gatk/"${sample}"_recal_data.table \
             --reference "${reference_genome}"  \
-            --known-sites "${reference_vcf}"
-           
+            --known-sites "${known_vcf}"
+
+echo "Recailbration Start"
     # Applying BQSR Recalibration
-    
+
     gatk ApplyBQSR \
            --bqsr-recal-file gatk/"${sample}"_recal_data.table \
            --input gatk/"${sample}"_sorted_dedup.bam \
            --output gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
            --reference "${reference_genome}"
-           
-    
+
+echo "Post Recailbration Quality check"
+
     # Checking the quality of recalibration
     # Post BQSR recal table
 
     gatk BaseRecalibrator \
-           --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \   
+           --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
            --output gatk/"${sample}"_post_recal_data.table \
            --reference "${reference_genome}"  \
-           --known-sites "${reference_vcf}"
-          
+           --known-sites "${known_vcf}"
+
+echo "Covariates Analysis"
 
     # Analyse covariates (compare before and After BQSR)
     # Evaluate and compare base quality score recalibration tables
@@ -224,12 +246,15 @@ do
            -before gatk/"${sample}"_recal_data.table \
            -after gatk/"${sample}"_post_recal_data.table \
            -plots gatk/"${sample}"_AnalyzeCovariates.pdf
-           
+
+echo "Haplotype Caller Start"
+
     gatk HaplotypeCaller \
            --reference "${reference_genome}" \
            --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
            --output gatk/"${sample}".g.vcf.gz \
            --ERC GVCF
-  
-done
+	   --native-pair-hmm-threads 16
+
+done < "/data/Documents/accession.txt"
 ```
