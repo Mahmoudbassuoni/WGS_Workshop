@@ -155,12 +155,11 @@ mkdir metrics gatk
 
 wget https://ftp.ensembl.org/pub/current_variation/vcf/homo_sapiens/homo_sapiens-chr13.vcf.gz
 
-gunzip homo_sapiens/homo_sapiens-chr13.vcf.gz
+gunzip homo_sapiens-chr13.vcf.gz
 ```
 ### 3.2 Index the VCF
 ```
-gatk IndexFeatureFile \
-     -F homo_sapiens-chr13.vcf
+gatk IndexFeatureFile -I homo_sapiens-chr13.vcf
 ```
 **Copy this and save is as `gatk.sh`. It may take a while to run this so it can be run in the background**.
 
