@@ -148,6 +148,12 @@ While following GATK best practices guidelines, the following steps are necessar
 2. Base recalibration
 3. HaplotypeCaller
 
+Before using GATK, we shall create an index of the reference genome. This should also be located in the same directory as the reference genome
+```
+gatk CreateSequenceDictionary --REFERENCE Homo_sapiens.GRCh38.dna.chromosome.13.fa --OUTPUT Homo_sapiens.GRCh38.dna.chromosome.13.dict
+```
+
+
 **Make directories `metrics` and `gatk`**
 ### 3.1 Download a reference set of known variants
 ```
