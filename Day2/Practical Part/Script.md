@@ -41,11 +41,11 @@ sudo docker run hello-world
 ```
 ### 1.3 Install our tutorial docker image
 ```
-sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.1
+sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.2
 ```
 ### 1.4 Run the docker image
 ```
-sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.1
+sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.2
 ```
 ## Part [2]: Dataset Retrieval and Pre-Proccessing
 ### 2.1 Dataset Download
