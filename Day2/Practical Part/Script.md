@@ -52,8 +52,8 @@ sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.2
 **Pick some data from SRA database using sratools**
 Create a text file and paste in these accession numbers. Call it `accession.txt`
 ```
-ERR10219898
 ERR10219899
+ERR10219900
 ```
 **How to do it using bash command line ?** 
 *hint use 'echo' with the separator being \n*.
