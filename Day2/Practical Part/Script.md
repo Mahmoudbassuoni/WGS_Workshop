@@ -231,8 +231,7 @@ echo "Haplotype Caller Start"
     gatk HaplotypeCaller \
            --reference "${reference_genome}" \
            --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
-           --output gatk/"${sample}".g.vcf.gz \
-           --ERC GVCF
+           --output gatk/"${sample}".vcf.gz \
 	   --native-pair-hmm-threads 16
 
 done < "/data/Documents/accession.txt"
