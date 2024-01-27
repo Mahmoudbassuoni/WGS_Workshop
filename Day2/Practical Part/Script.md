@@ -63,7 +63,7 @@ mkdir fastqs
 
 for sample in `cat accession.txt`;
 do
-    fastq-dump --gzip --split-3 $sample -O fastqs/
+    fastq-dump --split-files  $sample -O fastqs/
     
 done
 ```
