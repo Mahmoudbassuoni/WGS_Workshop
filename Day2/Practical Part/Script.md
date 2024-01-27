@@ -53,7 +53,7 @@ sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.2
 Create a text file and paste in these accession numbers. Call it `accession.txt`
 ```
 ERR10219899
-ERR10219900
+ERR10219901
 ```
 **How to do it using bash command line ?** 
 *hint use 'echo' with the separator being \n*.
