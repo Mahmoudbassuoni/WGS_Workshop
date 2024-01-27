@@ -14,10 +14,10 @@ To ensure a uniform environment for all participants, we use a Docker image that
 
 1. **Pull the Docker Image**:
    ```bash
-   sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.0
+   sudo docker pull mahmoudbassyouni/wgs_workshop_marc:1.0.2
 2. **Run the Docker Container**
    ```bash
-   sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.0
+   sudo docker run -it -v $HOME:/data/ mahmoudbassyouni/wgs_workshop_marc:1.0.2
 This Docker image includes tools such as FastQC, Trimmomatic, BWA, SAMtools, bcftools, and SnpEff, preconfigured for immediate use.
 
 ## Schedule
