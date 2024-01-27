@@ -226,27 +226,6 @@ echo "Recailbration Start"
            --output gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
            --reference "${reference_genome}"
 
-echo "Post Recailbration Quality check"
-
-    # Checking the quality of recalibration
-    # Post BQSR recal table
-
-    gatk BaseRecalibrator \
-           --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
-           --output gatk/"${sample}"_post_recal_data.table \
-           --reference "${reference_genome}"  \
-           --known-sites "${known_vcf}"
-
-echo "Covariates Analysis"
-
-    # Analyse covariates (compare before and After BQSR)
-    # Evaluate and compare base quality score recalibration tables
-
-    gatk AnalyzeCovariates \
-           -before gatk/"${sample}"_recal_data.table \
-           -after gatk/"${sample}"_post_recal_data.table \
-           -plots gatk/"${sample}"_AnalyzeCovariates.pdf
-
 echo "Haplotype Caller Start"
 
     gatk HaplotypeCaller \
