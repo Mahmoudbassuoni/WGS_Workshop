@@ -18,6 +18,6 @@ mkdir stats
 
 for sample in `cat accession.txt`; do
     # SnpEff for Variant Annotation
-    java -jar /opt/snpEff/snpEff.jar ann -v GRCh38.86 -html -stats stats/"${sample}"_snpEff_summary.html gatk/"${sample}"_filtered.vcf.gz > gatk/"${sample}"_annotated.vcf
+    java -jar /opt/snpEff/snpEff.jar ann -v GRCh38.86 -stats stats/"${sample}"_snpEff_summary.html gatk/"${sample}"_filtered.vcf.gz > gatk/"${sample}"_annotated.vcf
 done 
 ```
