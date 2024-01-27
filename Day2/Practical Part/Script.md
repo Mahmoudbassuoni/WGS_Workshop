@@ -85,13 +85,13 @@ mkdir trimmed_reads
 
 for sample in `cat accession.txt`;
 do
-    R1=fastqs/"${sample}"_1.fastq.gz
-    R2=fastqs/"${sample}"_2.fastq.gz
+    R1=fastqs/"${sample}"_1.fastq
+    R2=fastqs/"${sample}"_2.fastq
 
     java -jar /opt/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33 \
     $R1 $R2 \
-    trimmed_reads/"${sample}"_1_paired.fastq.gz trimmed_reads/"${sample}"_1_unpaired.fastq.gz \
-    trimmed_reads/"${sample}"_2_paired.fastq.gz trimmed_reads/"${sample}"_2_unpaired.fastq.gz \
+    trimmed_reads/"${sample}"_1_paired.fastq trimmed_reads/"${sample}"_1_unpaired.fastq \
+    trimmed_reads/"${sample}"_2_paired.fastq trimmed_reads/"${sample}"_2_unpaired.fastq \
     LEADING:10 TRAILING:10 SLIDINGWINDOW:4:15 MINLEN:36
 done
 ```
@@ -116,8 +116,8 @@ samtools faidx Homo_sapiens.GRCh38.dna.chromosome.13.fa
 ```
 for sample in `cat accession.txt`;
 do
-    R1=trimmed_reads/"${sample}"_1_paired.fastq.gz
-    R2=trimmed_reads/"${sample}"_2_paired.fastq.gz
+    R1=trimmed_reads/"${sample}"_1_paired.fastq
+    R2=trimmed_reads/"${sample}"_2_paired.fastq
     
     bwa mem -aM -t 4  \
         Homo_sapiens.GRCh38.dna.chromosome.13.fa \
