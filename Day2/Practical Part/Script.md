@@ -1,5 +1,5 @@
 # DAY 2, Practical Part. 
-This tutorial explains how to use the GATK best practices guidelines for WGS data, which can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-) for GATK usage and [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535912-Data-pre-processing-for-variant-discovery) for data preprocessing. It is solely intended for educational reasons. This Tutorial was copied and edited from [Ibra Lujumba](https://hackmd.io/@harbi811).
+This tutorial explains how to use the GATK best practices guidelines for WGS data, which can be found [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-) for GATK usage and [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035535912-Data-pre-processing-for-variant-discovery) for data preprocessing. It is solely intended for educational reasons. This Tutorial was copied and edited from [Ibra Lujumba](https://hackmd.io/@harbi811).m
 
 <p align="center"><a href="#"><img src="./pipeline.png"></a></p>
 
