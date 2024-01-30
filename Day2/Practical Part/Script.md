@@ -232,7 +232,7 @@ echo "Haplotype Caller Start"
            --reference "${reference_genome}" \
            --input gatk/"${sample}"_sorted_dedup_BQSR_recal.bam \
            --output gatk/"${sample}".vcf.gz \
-	   --native-pair-hmm-threads 16
+	   --native-pair-hmm-threads 4
 
 done < "/data/Documents/accession.txt"
 ```
