@@ -6,8 +6,8 @@ for sample in `cat accession.txt`;
 do
     # Variant Filtration    
     gatk VariantFiltration \
-           --variant gatk/"${sample}".vcf \
-           --output gatk/"${sample}"_filtered.vcf \
+           --variant gatk/"${sample}".vcf.gz \
+           --output gatk/"${sample}"_filtered.vcf.gz \
            --filter-expression "QD < 2.0 || FS > 60.0 || MQ < 40.0" \
            --filter-name "MY_SNP_FILTER"
 done
