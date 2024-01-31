@@ -24,6 +24,7 @@ Day 2 dives into the critical steps of WGS data processing, including quality ch
 * [Quality Control Guidelines](https://github.com/ga4gh/quality-control-wgs)
 * [BWA User Manual](https://bio-bwa.sourceforge.net/bwa.shtml)
 * [BQSR Documentation](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR-)
+* [ANN field (VCF output files](https://pcingola.github.io/SnpEff/snpeff/inputoutput/#ann-field-vcf-output-files)
 ## Exercises
 Practical exercises will be conducted to reinforce the concepts learned. Be prepared to work with real sequencing data.
 
