@@ -12,6 +12,10 @@ do
            --filter-name "MY_SNP_FILTER"
 done
 ```
+
+```
+bcftools view -f 'PASS' gatk/ERR10219901_filtered.vcf.gz
+```
 ## Part [2] : Variants Annotation
 ```
 mkdir stats
