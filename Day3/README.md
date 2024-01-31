@@ -22,6 +22,7 @@ The final day focuses on the identification of genomic variants from sequencing 
 * [GATK Variant Calling Guide](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-)
 * [VCF File Format Reference](https://samtools.github.io/hts-specs/VCFv4.2.pdf)
 * [SNPEff output summary](https://pcingola.github.io/SnpEff/snpeff/outputsummary/#main-summary-table)
+* [ANN field (VCF output files](https://pcingola.github.io/SnpEff/snpeff/inputoutput/#ann-field-vcf-output-files)
 ## Exercises
 The day includes practical exercises in variant calling and filtering, providing hands-on experience in these critical analysis steps.
 
