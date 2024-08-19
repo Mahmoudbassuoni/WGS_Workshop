@@ -178,8 +178,8 @@ nohup bash gatk.sh >& gatk.log &
 set -x
 set -e
 
-reference_genome="/data/Documents/Homo_sapiens.GRCh38.dna.chromosome.13.fa"
-known_vcf="/data/Documents/homo_sapiens-chr13.vcf"
+reference_genome="/data/workshop/Homo_sapiens.GRCh38.dna.chromosome.13.fa"
+known_vcf="/data/workshop/homo_sapiens-chr13.vcf"
 
 # Check if reference genome and known VCF exist
 if [[ ! -f "$reference_genome" || ! -f "$known_vcf" ]]; then
@@ -188,7 +188,7 @@ if [[ ! -f "$reference_genome" || ! -f "$known_vcf" ]]; then
 fi
 
 while IFS= read -r sample; do
-    input_bam="/data/Documents/${sample}_sorted.bam"  # Adjust the path as necessary
+    input_bam="/data/workshop/${sample}_sorted.bam"  # Adjust the path as necessary
 
     # Check if input BAM file exists
     if [[ ! -f "$input_bam" ]]; then
@@ -234,5 +234,5 @@ echo "Haplotype Caller Start"
            --output gatk/"${sample}".vcf.gz \
 	   --native-pair-hmm-threads 4
 
-done < "/data/Documents/accession.txt"
+done < "/data/workshop/accession.txt"
 ```
